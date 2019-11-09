@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Dinosaur {
 	int age;
 	int happy;
@@ -32,11 +30,12 @@ public class Dinosaur {
 	public String toString() {
 		return(this.getName() +
 			"\nAge:" + this.getAge() +
-			" Hunger: " + this.getHunger() +
-			" Happiness: " + this.getHappy());
+			", Hunger: " + this.getHunger() +
+			", Happiness: " + this.getHappy());
 	}
 	
 	public static void main(String args[]) {
+			
 			new Routine();
 	}
 }
