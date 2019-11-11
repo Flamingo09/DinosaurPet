@@ -9,7 +9,7 @@ public class Routine {
 	public Routine() {
 	do {
 		System.out.println(tri.name + " is looking around");
-		System.out.println("What do you want to do? \n1. Status \n2. Feed");
+		System.out.println("What do you want to do? \n1. Status \n2. Feed \n3. Explore");
 		int command = scan.nextInt();
 		if (command == 1) {
 			System.out.println(tri.toString());
