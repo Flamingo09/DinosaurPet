@@ -17,7 +17,18 @@ public class Routine {
 		int rand2 = r.nextInt(2);
 		int rand3 = r.nextInt(3);
 		int rand4 = r.nextInt(4);
-		System.out.println(tri.name + " is looking around");
+		if (tri.happy >= 75) {
+			System.out.println(tri.name + " is proudly walking around");
+		}
+		else if (tri.happy >= 50 & tri.happy < 75) {
+			System.out.println(tri.name + " is looking around");
+		}
+		else if (tri.happy >= 25 & tri.happy < 50) {
+			System.out.println(tri.name + " seems unhappy.");
+		}
+		else {
+			System.out.println(tri.name + " is miserable.");
+		}
 		System.out.println("What do you want to do? \n1. Status \n2. Feed \n3. Explore");
 		int command = scan.nextInt();
 		
@@ -42,10 +53,15 @@ public class Routine {
 		
 		// command 2 feeds the pet
 		else if (command == 2)	{
-			System.out.println(tri.name + " likes this food!");
-			tri.happy += 2;
-			tri.hunger -= 5;
-			food = food - 1;
+			if (food >= 1) {
+				System.out.println(tri.name + " likes this food! \nHappy + 2");
+				tri.happy += 2;
+				tri.hunger -= 5;
+				food = food - 1;
+			}
+			else {
+				System.out.println("You're out of food! Go find some more!");
+			}
 		}
 		
 		
