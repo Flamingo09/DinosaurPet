@@ -160,6 +160,8 @@ public class Routine {
 					command = scan.nextInt();
 						if (command == 1) {
 							key =- 1;
+							if(key < 0)
+								break;
 							System.out.println("You open the treasure chest and find...");
 							if (rand3 == 2) {
 								System.out.println("... a stockpile of food!");
