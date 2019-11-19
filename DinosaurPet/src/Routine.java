@@ -40,7 +40,7 @@ public class Routine {
 			System.out.println(tri.name + " is miserable.");
 		}
 		System.out.println("///////////////////////////////////////////");
-		System.out.println(tri.toString());
+		System.out.println(tri.toString() + "     Keys: " + key);
 		System.out.println("What do you want to do? [1] Status [2] Feed [3] Explore [4] Play");
 		int command = scan.nextInt();
 		
@@ -160,8 +160,10 @@ public class Routine {
 					command = scan.nextInt();
 						if (command == 1) {
 							key =- 1;
-							if(key < 0)
-								break;
+							if(key < 0) {
+								key = 0;
+							}
+							
 							System.out.println("You open the treasure chest and find...");
 							if (rand3 == 2) {
 								System.out.println("... a stockpile of food!");
