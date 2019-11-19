@@ -17,6 +17,10 @@ public class Routine {
 		int rand2 = r.nextInt(2);
 		int rand3 = r.nextInt(3);
 		int rand4 = r.nextInt(4);
+		if (tri.hunger >= 100) {
+			life = false;
+		}
+		
 		if (tri.happy >= 75) {
 			System.out.println(tri.name + " is proudly walking around");
 		}
@@ -29,7 +33,7 @@ public class Routine {
 		else {
 			System.out.println(tri.name + " is miserable.");
 		}
-		System.out.println("What do you want to do? \n1. Status \n2. Feed \n3. Explore");
+		System.out.println("What do you want to do? \n1. Status \n2. Feed \n3. Explore \n4. Play");
 		int command = scan.nextInt();
 		
 		// command 1 checks the stats
@@ -117,11 +121,21 @@ public class Routine {
 			}
 		}
 		
+		else if (command == 4) {
+			System.out.println(tri.name + " wants to play fetch!");
+			
+			System.out.println(tri.name + " wants to race!");
+			
+			System.out.println(tri.name + " wants to play with a toy!");
+		}
+		
 		// not a valid option
 		else {
 			System.out.println("That's not one of the options!");
 		}
 		
 		} while (life == true);
+	
+	System.out.println(tri.name + " has died.");
 	}
 }
