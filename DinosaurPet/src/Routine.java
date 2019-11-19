@@ -21,7 +21,7 @@ public class Routine {
 		int rand4 = r.nextInt(4);
 
 		if(turn == 0) {
-			System.out.println("Name of out Dinosaur pet is " + tri.name ". \n Do you want to change his name?");
+			System.out.println("Name of out Dinosaur pet is " + tri.name + ". \n Do you want to change his name?");
 			System.out.println("1. Yes \n2. No");
 			int command = scan.nextInt();
 			if(command == 1) {
@@ -206,11 +206,8 @@ public class Routine {
 		turn ++;
 		if(turn%3 == 0)
 			tri.age ++;
-		} while (life == true && key >= 0 && tri.age < 100);
-
-		if(key < 0)
-			System.out.println(tri.name + " got short of keys");
-		else if(tri.age >= 100)
+		} while (life == true && tri.age < 100);
+		if(tri.age >= 100)
 			System.out.println(tri.name + " grew old and died at the age of " + tri.age);
 		else {
 			System.out.println(tri.name + " has starved.");
