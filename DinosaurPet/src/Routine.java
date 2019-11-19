@@ -19,6 +19,16 @@ public class Routine {
 		int rand2 = r.nextInt(2);
 		int rand3 = r.nextInt(3);
 		int rand4 = r.nextInt(4);
+
+		if(turn == 0) {
+			System.out.println("Name of out Dinosaur pet is " + tri.name ". \n Do you want to change his name?");
+			System.out.println("1. Yes \n2. No");
+			int command = scan.nextInt();
+			if(command == 1) {
+				tri.name = scan.nextLine().trim();
+				System.out.println("Name of our Dinosaur pet has been changed to " + tri.name);
+			}
+		}
 		if (tri.hunger >50) {
 			System.out.println(tri.name + " is hungry!");
 		}
