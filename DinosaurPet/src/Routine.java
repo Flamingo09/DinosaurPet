@@ -21,10 +21,11 @@ public class Routine {
 		int rand4 = r.nextInt(4);
 
 		if(turn == 0) {
-			System.out.println("Name of out Dinosaur pet is " + tri.name + ". \n Do you want to change his name?");
-			System.out.println("1. Yes \n2. No");
+			System.out.println("Name of out Dinosaur pet is " + tri.name + ". \nDo you want to change his name?");
+			System.out.println("[1] Yes \n[2] No");
 			int command = scan.nextInt();
 			if(command == 1) {
+				System.out.println("What should be the new name?");
 				tri.name = scan.nextLine().trim();
 				System.out.println("Name of our Dinosaur pet has been changed to " + tri.name);
 			}
@@ -34,6 +35,10 @@ public class Routine {
 		}
 		
 		if (tri.hunger >= 100) {
+			life = false;
+		}
+		
+		if (tri.age >= 60 && tri.happy <= 25) {
 			life = false;
 		}
 		
@@ -59,11 +64,9 @@ public class Routine {
 			if (tri.happy >= 75) {
 				System.out.println(tri.name + " is in a good mood!");
 			}
-			
 			else if (tri.happy < 75 & tri.happy >= 45) {
 				System.out.println(tri.name + " is doing alright.");
 			}
-			
 			else {
 				System.out.println(tri.name + " is mad!");
 			}
@@ -173,7 +176,6 @@ public class Routine {
 							if(key < 0) {
 								key = 0;
 							}
-							
 							System.out.println("You open the treasure chest and find...");
 							if (rand3 == 2) {
 								System.out.println("... a stockpile of food!");
