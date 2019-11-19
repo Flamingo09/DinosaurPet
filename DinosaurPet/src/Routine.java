@@ -7,6 +7,7 @@ public class Routine {
 	int food = 3;
 	int gold = 0;
 	int key = 0;
+	int turn = 0;
 	boolean life = true;
 	Random r = new Random();
 	int rand2;			// 0, 1
@@ -156,8 +157,8 @@ public class Routine {
 				tri.hunger += 5;
 				tri.happy += 5;
 				if (key >= 1) {
-					System.out.println(tri.name + " found a treasure chest! n/Do you want to open it?");
-					System.out.println("1. Yes n/2. No");
+					System.out.println(tri.name + " found a treasure chest! \nDo you want to open it?");
+					System.out.println("1. Yes \n2. No");
 					command = scan.nextInt();
 						if (command == 1) {
 							key =- 1;
@@ -180,7 +181,7 @@ public class Routine {
 				}
 				
 				else {
-					System.out.println(tri.name + " found a treasure chest! n/But you don't have a key!!");
+					System.out.println(tri.name + " found a treasure chest! \nBut you don't have a key!!");
 				}
 			}
 		}
@@ -190,6 +191,7 @@ public class Routine {
 			System.out.println("That's not one of the options!");
 		}
 		
+		turn ++;
 		} while (life == true);
 	
 	System.out.println(tri.name + " has starved.");
