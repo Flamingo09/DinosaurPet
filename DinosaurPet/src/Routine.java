@@ -196,9 +196,15 @@ public class Routine {
 		turn ++;
 		if(turn%3 == 0)
 			tri.age ++;
-		} while (life == true && key >= 0);
-	
-	System.out.println(tri.name + " has starved.");
-	System.out.println(tri.name + " has died at the age of " + tri.age);
+		} while (life == true && key >= 0 && tri.age < 100);
+
+		if(key < 0)
+			System.out.println(tri.name + " got short of keys");
+		else if(tri.age >= 100)
+			System.out.println(tri.name + " grew old and died at the age of " + tri.age);
+		else {
+			System.out.println(tri.name + " has starved.");
+			System.out.println(tri.name + " has died at the age of " + tri.age);
+		}
 	}
 }
