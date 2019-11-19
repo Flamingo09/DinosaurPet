@@ -39,12 +39,13 @@ public class Routine {
 		else {
 			System.out.println(tri.name + " is miserable.");
 		}
-		System.out.println("What do you want to do? \n1. Status \n2. Feed \n3. Explore \n4. Play");
+		System.out.println("///////////////////////////////////////////");
+		System.out.println(tri.toString());
+		System.out.println("What do you want to do? [1] Status [2] Feed [3] Explore [4] Play");
 		int command = scan.nextInt();
 		
 		// command 1 checks the stats
 		if (command == 1) {
-			System.out.println(tri.toString());
 			if (tri.happy >= 75) {
 				System.out.println(tri.name + " is in a good mood!");
 			}
@@ -56,10 +57,7 @@ public class Routine {
 			else {
 				System.out.println(tri.name + " is mad!");
 			}
-			System.out.println("Food: " + food);
-			System.out.println("Gold: " + gold);
-			System.out.println("Keys: " + key);
-
+			System.out.println("Food: " + food + "    Gold: " + gold + "    Keys: " + key);
 		}
 		
 		// command 2 feeds the pet
