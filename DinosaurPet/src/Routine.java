@@ -6,6 +6,7 @@ public class Routine {
 	Dinosaur tri = new Dinosaur(0, 50, 50, "Triceratops");
 	int food = 3;
 	int gold = 0;
+	int key = 0;
 	boolean life = true;
 	Random r = new Random();
 	int rand2;			// 0, 1
@@ -17,6 +18,10 @@ public class Routine {
 		int rand2 = r.nextInt(2);
 		int rand3 = r.nextInt(3);
 		int rand4 = r.nextInt(4);
+		if (tri.hunger >50) {
+			System.out.println(tri.name + " is hungry!");
+		}
+		
 		if (tri.hunger >= 100) {
 			life = false;
 		}
@@ -52,6 +57,7 @@ public class Routine {
 			}
 			System.out.println("Food: " + food);
 			System.out.println("Gold: " + gold);
+			System.out.println("Keys: " + key);
 
 		}
 		
@@ -72,6 +78,7 @@ public class Routine {
 		// command 3 searches for food
 		else if (command == 3) {
 			System.out.println(tri.name + " is exploring the area.");
+			
 			if (tri.happy >= 80) {
 				System.out.println("He looks pretty confident!");
 				
@@ -79,13 +86,17 @@ public class Routine {
 				if (rand4 >= 1) {
 					System.out.println("Success! He found a lot of food!");
 					food += 3;
-					tri.hunger += 3;
+					tri.hunger += 5;
+					if (rand4 == 3) {
+						System.out.println(tri.name + " also found a key!");
+						key++;
+					}
 				}
 				
 				else {
 					System.out.println("Not much food was found.");
 					food += 1;
-					tri.hunger += 6;
+					tri.hunger += 5;
 				}
 			}
 			
@@ -96,12 +107,16 @@ public class Routine {
 				if (rand3 >= 1) {
 					System.out.println("Alright! He found  some food!");
 					food += 1;
-					tri.hunger += 3;
+					tri.hunger += 5;
+					if (rand4 == 3) {
+						System.out.println(tri.name + " also found a key!");
+						key++;
+					}
 				}
 				
 				else {
 					System.out.println("He looked all over, but no food was found...");
-					tri.hunger += 6;
+					tri.hunger += 5;
 				}
 			}
 			
@@ -112,21 +127,62 @@ public class Routine {
 				if (rand2 == 1) {
 					System.out.println("Good! He found  some food!");
 					food += 1;
-					tri.hunger += 3;
+					tri.hunger += 5;
+					if (rand4 == 3) {
+						System.out.println(tri.name + " also found a key!");
+						key++;
+					}
 				}
 				else {
 					System.out.println("Guess he didn't find any food...");
-					tri.hunger += 6;
+					tri.hunger += 5;
 				}
 			}
 		}
 		
 		else if (command == 4) {
-			System.out.println(tri.name + " wants to play fetch!");
-			
-			System.out.println(tri.name + " wants to race!");
-			
-			System.out.println(tri.name + " wants to play with a toy!");
+			if (rand3 == 0) {
+				System.out.println(tri.name + " wants to play fetch!");
+				tri.hunger += 5;
+				tri.happy += 5;
+			}
+			else if (rand3 == 1) {
+				System.out.println(tri.name + " wants to race!");
+				tri.hunger += 5;
+				tri.happy += 5;
+			}
+			else {
+				System.out.println(tri.name + " wants to dig!");
+				tri.hunger += 5;
+				tri.happy += 5;
+				if (key >= 1) {
+					System.out.println(tri.name + " found a treasure chest! n/Do you want to open it?");
+					System.out.println("1. Yes n/2. No");
+					command = scan.nextInt();
+						if (command == 1) {
+							key =- 1;
+							System.out.println("You open the treasure chest and find...");
+							if (rand3 == 2) {
+								System.out.println("... a stockpile of food!");
+								food =+ 10;
+							}
+							else if (rand3 == 1) {
+								System.out.println("... lights and music blast out of the chest!");
+								System.out.println("What a cool light show!");
+								System.out.println(tri.name + " is loving this!!");
+								tri.happy =+ 10;
+							}
+							else {
+								System.out.println("2 keys!");
+								key =+ 2;
+							}
+						}
+				}
+				
+				else {
+					System.out.println(tri.name + " found a treasure chest! n/But you don't have a key!!");
+				}
+			}
 		}
 		
 		// not a valid option
@@ -136,6 +192,7 @@ public class Routine {
 		
 		} while (life == true);
 	
+	System.out.println(tri.name + " has starved.");
 	System.out.println(tri.name + " has died.");
 	}
 }
