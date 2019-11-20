@@ -192,11 +192,11 @@ public class Routine {
 									key = 0;
 								}
 								System.out.println("You open the treasure chest and find...");
-								if (rand3 == 2) {
+								if ((rand2 + rand4)%3 == 2) {
 									System.out.println("... a stockpile of food!");
 									food =+ 10;
 								}
-								else if (rand3 == 1) {
+								else if ((rand2 + rand4)%3 == 1) {
 									System.out.println("... lights and music blast out of the chest!");
 									System.out.println("What a cool light show!");
 									System.out.println(tri.name + " is loving this!!");
