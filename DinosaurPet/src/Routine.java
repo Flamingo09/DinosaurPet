@@ -9,6 +9,7 @@ public class Routine {
 	int key = 0;
 	int turn = 0;
 	boolean life = true;
+	boolean select = true;
 	Random r = new Random();
 	int rand2;			// 0, 1
 	int rand3; 			// 0, 1, 2
@@ -21,16 +22,26 @@ public class Routine {
 		int rand4 = r.nextInt(4);
 
 		if(turn == 0) {
-			System.out.println("Name of out Dinosaur pet is " + tri.name + ". \nDo you want to change his name?");
-			System.out.println("[1] Yes \n[2] No");
-			int command = scan.nextInt();
-			if(command == 1) {
-				System.out.println("What should be the new name? (Max 10 chars");
-				String cutName = scan.next();
-				tri.name = cutName.substring(0, 10);
-				System.out.println("Name of our Dinosaur pet has been changed to " + tri.name);
-			}
+			do {
+				System.out.println("Name of our Dinosaur pet is " + tri.name + ". \nDo you want to change his name?");
+				System.out.println("[1] Yes \n[2] No");
+				int command = scan.nextInt();
+				if(command == 1) {
+					System.out.println("What should be the new name?");
+					tri.name = scan.next();
+					System.out.println("Name of our Dinosaur pet has been changed to " + tri.name);
+					select = false;
+				}
+				else if(command == 2) {
+					System.out.println("You decided to keep the name as " + tri.name);
+					select = false;
+				}
+				else {
+					System.out.println("That's not one of the options!");
+				}
+			} while (select == true);
 		}
+		
 		if (tri.hunger >50) {
 			System.out.println(tri.name + " is hungry!");
 		}
@@ -167,33 +178,47 @@ public class Routine {
 			}
 			else {
 				System.out.println(tri.name + " wants to dig!");
+				select = true;
 				tri.hunger += 5;
 				tri.happy += 5;
 				if (key >= 1) {
-					System.out.println(tri.name + " found a treasure chest! \nDo you want to open it?");
-					System.out.println("1. Yes \n2. No");
-					command = scan.nextInt();
-						if (command == 1) {
-							key =- 1;
-							if(key < 0) {
-								key = 0;
+					do {
+						System.out.println(tri.name + " found a treasure chest! \nDo you want to open it?");
+						System.out.println("1. Yes \n2. No");
+						command = scan.nextInt();
+							if (command == 1) {
+								key =- 1;
+								if(key < 0) {
+									key = 0;
+								}
+								System.out.println("You open the treasure chest and find...");
+								if (rand3 == 2) {
+									System.out.println("... a stockpile of food!");
+									food =+ 10;
+								}
+								else if (rand3 == 1) {
+									System.out.println("... lights and music blast out of the chest!");
+									System.out.println("What a cool light show!");
+									System.out.println(tri.name + " is loving this!!");
+									tri.happy =+ 10;
+								}
+								else {
+									System.out.println("2 keys!");
+									key =+ 2;
+								}
+								
+								select = false;
 							}
-							System.out.println("You open the treasure chest and find...");
-							if (rand3 == 2) {
-								System.out.println("... a stockpile of food!");
-								food =+ 10;
+							
+							else if(command == 2) {
+								System.out.println("You decided not to open the treasure chest");
+								select = false;
 							}
-							else if (rand3 == 1) {
-								System.out.println("... lights and music blast out of the chest!");
-								System.out.println("What a cool light show!");
-								System.out.println(tri.name + " is loving this!!");
-								tri.happy =+ 10;
-							}
+							
 							else {
-								System.out.println("2 keys!");
-								key =+ 2;
-							}
-						}
+								System.out.println("That's not one of the options!");
+							}	
+					} while (select == true);
 				}
 				
 				else {
@@ -202,7 +227,6 @@ public class Routine {
 			}
 		}
 		
-		// not a valid option
 		else {
 			System.out.println("That's not one of the options!");
 		}
@@ -211,6 +235,7 @@ public class Routine {
 		if(turn%3 == 0)
 			tri.age ++;
 		} while (life == true && tri.age < 100);
+		
 		if(tri.age >= 100)
 			System.out.println(tri.name + " grew old and died at the age of " + tri.age);
 		else {
