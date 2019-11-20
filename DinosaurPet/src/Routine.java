@@ -25,8 +25,9 @@ public class Routine {
 			System.out.println("[1] Yes \n[2] No");
 			int command = scan.nextInt();
 			if(command == 1) {
-				System.out.println("What should be the new name?");
-				tri.name = scan.nextLine().trim();
+				System.out.println("What should be the new name? (Max 10 chars");
+				String cutName = scan.next();
+				tri.name = cutName.substring(0, 10);
 				System.out.println("Name of our Dinosaur pet has been changed to " + tri.name);
 			}
 		}
@@ -152,6 +153,7 @@ public class Routine {
 			}
 		}
 		
+		// command 4 plays a game
 		else if (command == 4) {
 			if (rand3 == 0) {
 				System.out.println(tri.name + " wants to play fetch!");
